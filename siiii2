@@ -1,6 +1,6 @@
 import pygame 
 import sys
-
+from random import*
 
 
 pygame.init()
@@ -12,6 +12,12 @@ text_value = ""
 text = font.render(text_value, True, (255, 255, 255))
 text_otvet = ""
 text2 = font.render(text_otvet, True, (255, 255, 255))
+
+
+goodbye = ['пока', 'до встречи', 'досвидания', 'увидимся', 'до завтра']
+
+dela = ['как дела', 'что нового', 'как дела?', 'что нового?']
+
 while True:
     mouse_pos = pygame.mouse.get_pos()
     for event in pygame.event.get():
@@ -25,12 +31,37 @@ while True:
                 
             if event.key == pygame.K_RETURN:
                 print(text_value)
+                
                 if text_value == 'привет':
                     text_otvet = 'здравствуй'
                     text2 = font.render(text_otvet, True, (255, 255, 255))
                     text = font.render(text_value, True, (255, 255, 255))
-                    # display.blit(text2, (100, 250))
+                    display.blit(text2, (100, 250))
                     text_value = ''
+                    # while True:
+                if text_value == 'как дела':
+                    text_otvet  = choice(dela)
+                    text2 = font.render(text_otvet, True, (255, 255, 255))
+                    text = font.render(text_value, True, (255, 255, 255))
+                    display.blit(text2, (100, 250))
+                    text_value = ''
+
+
+
+
+
+
+
+
+
+                        # if text_value == goodbye:
+                        #     pygame.quit()
+                        #     sys.exit()
+                        
+
+                
+                
+                
                 else:
                     text_value = text_value[:0]
                     text = font.render(text_value, True, (255, 255, 255))
@@ -42,8 +73,7 @@ while True:
         if event.type == pygame.TEXTINPUT:
             text_value += event.text
             text = font.render(text_value, True, (255, 255, 255))
-            text_otvet = text_otvet[:0]
-            text2 = font.render(text_otvet, True, (255, 255, 255))    
+            
 
     display.blit(background, (0, 0))
     display.blit(text, (100, 150))
