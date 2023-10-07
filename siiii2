@@ -1,0 +1,56 @@
+import pygame 
+import sys
+
+
+
+pygame.init()
+display = pygame.display.set_mode((700, 500))
+background = pygame.Surface((700, 500))
+
+font = pygame.font.SysFont("Verdana", 20)
+text_value = ""
+text = font.render(text_value, True, (255, 255, 255))
+text_otvet = ""
+text2 = font.render(text_otvet, True, (255, 255, 255))
+while True:
+    mouse_pos = pygame.mouse.get_pos()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_BACKSPACE:
+                text_value = text_value[:-1]
+                text = font.render(text_value, True, (255, 255, 255))
+                
+            if event.key == pygame.K_RETURN:
+                print(text_value)
+                text_value = text_value[:0]
+                text = font.render(text_value, True, (255, 255, 255))
+                text_otvet = ''
+                text2 = font.render(text_otvet, True, (255, 255, 255))
+                if text_value := 'привет':
+                    text_otvet = 'здравствуй'
+                    text2 = font.render(text_otvet, True, (255, 255, 255))
+                    text_value = text_value[:0]
+                    text = font.render(text_value, True, (255, 255, 255))
+                    # display.blit(text2, (100, 250))
+                    
+                else:
+                    text_value = text_value[:0]
+                    text = font.render(text_value, True, (255, 255, 255))
+                    text_otvet = ''
+                    text2 = font.render(text_otvet, True, (255, 255, 255))
+
+                    
+                    
+        if event.type == pygame.TEXTINPUT:
+            text_value += event.text
+            text = font.render(text_value, True, (255, 255, 255))
+            text_otvet = text_otvet[:0]
+            text2 = font.render(text_otvet, True, (255, 255, 255))    
+
+    display.blit(background, (0, 0))
+    display.blit(text, (100, 150))
+    display.blit(text2, (100, 250))
+    pygame.display.update()
