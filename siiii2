@@ -29,13 +29,12 @@ while True:
                 text = font.render(text_value, True, (255, 255, 255))
                 text_otvet = ''
                 text2 = font.render(text_otvet, True, (255, 255, 255))
-                if text_value := 'привет':
+                if text_value == 'привет':
                     text_otvet = 'здравствуй'
                     text2 = font.render(text_otvet, True, (255, 255, 255))
-                    text_value = text_value[:0]
                     text = font.render(text_value, True, (255, 255, 255))
                     # display.blit(text2, (100, 250))
-                    
+                    text_value = ''
                 else:
                     text_value = text_value[:0]
                     text = font.render(text_value, True, (255, 255, 255))
