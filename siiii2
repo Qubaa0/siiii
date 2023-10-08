@@ -14,18 +14,14 @@ text_otvet = ""
 text2 = font.render(text_otvet, True, (255, 255, 255))
 
 
-
-
-
 goodbye = ['пока', 'до встречи', 'досвидания', 'увидимся', 'до завтра']
 
-dela = ['как дела', 'что нового', 'как дела?', 'что нового?']
+dela = ['а у тебя как?', 'как дела?']
 
-feelings = ['нормально', 'пойдёт', 'хорошо', 'отлично']
+otvet_dela = ['пойдёт, а у тебя как?', 'хорошо, а у тебя как?', 'нормально, а у тебя как?', 'отлично, а у тебя как?']
 
-history_good =['Ну, сегодня просто хороший день', 'я сегодня увидела тебя, поэтому день уже хороший']
+otvet_delat = ['Сегодня, я буду разговаривать с тобой', 'сегодня, ну как обычно, я буду говорить с тобой']
 
-history_otlichno = ['сегодня просто замечательный день, произошло много интересного']
 
 
 while True:
@@ -48,47 +44,24 @@ while True:
                     text = font.render(text_value, True, (255, 255, 255))
                     display.blit(text2, (100, 250))
                     text_value = ''
-                    # while True:
-                if text_value == dela:
-                    text_otvet  = choice(feelings)
+                elif text_value == 'как дела' or text_value == 'как дела?':
+                    text_otvet  = choice(otvet_dela)
                     text2 = font.render(text_otvet, True, (255, 255, 255))
                     text = font.render(text_value, True, (255, 255, 255))
                     display.blit(text2, (100, 250))
                     text_value = ''
-                    if text_otvet == 'хорошо':
-                        text_otvet = choice(history_good)
-                        text2 = font.render(text_otvet, True, (255, 255, 255))
-                        text = font.render(text_value, True, (255, 255, 255))
-                        display.blit(text2, (100, 250))
-                        text_value = ''
-                    
-                    if text_otvet == 'отлично':
-                        text_otvet = choice(history_good)
-                        text2 = font.render(text_otvet, True, (255, 255, 255))
-                        text = font.render(text_value, True, (255, 255, 255))
-                        display.blit(text2, (100, 250))
-                        text_value = ''
-                if text_value == goodbye:
-                    pygame.quit()
-                    sys.exit()
-
-
-
-
-
-
-
-
-
-
-                        # if text_value == goodbye:
-                        #     pygame.quit()
-                        #     sys.exit()
-                        
-
-                
-                
-                
+                elif text_value == 'хорошо' or text_value == 'отлично':
+                    text_otvet  = 'я рада'
+                    text2 = font.render(text_otvet, True, (255, 255, 255))
+                    text = font.render(text_value, True, (255, 255, 255))
+                    display.blit(text2, (100, 250))
+                    text_value = ''
+                elif text_value == 'чем думаешь заняться сегодня?' or text_value == 'чем думаешь заняться сегодня' or text_value == 'что будешь делать?' or text_value == 'чем займёшься?' or text_value == 'чем займешься?':
+                    text_otvet  = choice(otvet_delat)
+                    text2 = font.render(text_otvet, True, (255, 255, 255))
+                    text = font.render(text_value, True, (255, 255, 255))
+                    display.blit(text2, (100, 250))
+                    text_value = ''
                 else:
                     text_value = text_value[:0]
                     text = font.render(text_value, True, (255, 255, 255))
