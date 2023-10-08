@@ -14,9 +14,19 @@ text_otvet = ""
 text2 = font.render(text_otvet, True, (255, 255, 255))
 
 
+
+
+
 goodbye = ['пока', 'до встречи', 'досвидания', 'увидимся', 'до завтра']
 
 dela = ['как дела', 'что нового', 'как дела?', 'что нового?']
+
+feelings = ['нормально', 'пойдёт', 'хорошо', 'отлично']
+
+history_good =['Ну, сегодня просто хороший день', 'я сегодня увидела тебя, поэтому день уже хороший']
+
+history_otlichno = ['сегодня просто замечательный день, произошло много интересного']
+
 
 while True:
     mouse_pos = pygame.mouse.get_pos()
@@ -39,12 +49,29 @@ while True:
                     display.blit(text2, (100, 250))
                     text_value = ''
                     # while True:
-                if text_value == 'как дела':
-                    text_otvet  = choice(dela)
+                if text_value == dela:
+                    text_otvet  = choice(feelings)
                     text2 = font.render(text_otvet, True, (255, 255, 255))
                     text = font.render(text_value, True, (255, 255, 255))
                     display.blit(text2, (100, 250))
                     text_value = ''
+                    if text_otvet == 'хорошо':
+                        text_otvet = choice(history_good)
+                        text2 = font.render(text_otvet, True, (255, 255, 255))
+                        text = font.render(text_value, True, (255, 255, 255))
+                        display.blit(text2, (100, 250))
+                        text_value = ''
+                    
+                    if text_otvet == 'отлично':
+                        text_otvet = choice(history_good)
+                        text2 = font.render(text_otvet, True, (255, 255, 255))
+                        text = font.render(text_value, True, (255, 255, 255))
+                        display.blit(text2, (100, 250))
+                        text_value = ''
+                if text_value == goodbye:
+                    pygame.quit()
+                    sys.exit()
+
 
 
 
